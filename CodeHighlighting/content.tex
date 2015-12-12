@@ -1,0 +1,96 @@
+\begin{lstlisting}
+package nl.fontys.sevenlo.group6.events;
+
+import nl.fontys.sevenlo.group6.server.elevator.Elevator;
+
+/**
+* Button events are fired if a button is pressed.
+* 
+* @author Tobias Derksen
+*/
+public class ButtonEvent implements Event {
+
+private static final long serialVersionUID = -1248075553076742800L;
+
+/**
+* @serial
+*/
+private final Button button;
+
+/**
+* @serial
+* Should it be transient???
+*/
+private final Elevator elevator;
+
+/**
+* Constructor
+* 
+* @param sender The elevator who sent these event.
+* @param button The type of button which is pressed.
+* @throws NullPointerException If sender or button is null.
+*/
+public ButtonEvent(Elevator sender, Button button) {
+if (sender == null || button == null) {
+throw new NullPointerException();
+}
+
+this.button = button;
+this.elevator = sender;
+}
+
+/**
+* {@inheritDoc}
+*/
+@Override
+public Elevator getSender() {
+return elevator;
+}
+
+/**
+* Returns which button type is pressed.
+* 
+* @return The button type.
+*/
+public Button getButton() {
+return button;
+}
+
+@Override
+public int hashCode() {
+int result = 17;
+result += 31 * button.hashCode();
+result += 31 * elevator.hashCode();
+
+return result;
+}
+
+@Override
+public boolean equals(Object o) {
+if (o instanceof ButtonEvent) {
+if (o == this) {
+return true;
+}
+
+ButtonEvent other = (ButtonEvent) o;
+
+return (button.equals(other.button) && elevator.equals(other.elevator));
+}
+
+return false;
+}
+
+/**
+* Enum of possible button types.
+*/
+public enum Button {
+OPEN_DOOR,
+CLOSE_DOOR,
+ALARM,
+CALL,
+TARGET,
+NURSE
+}
+}
+
+\end{lstlisting}

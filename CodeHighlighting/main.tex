@@ -1,0 +1,125 @@
+\documentclass[a4paper,oneside,11pt,notitlepage]{report}
+
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[pdftex]{graphicx} %%Grafiken in pdfLaTeX
+\usepackage{a4wide} %%Kleinere Seitenränder = mehr Text pro Zeile.
+\usepackage{longtable} %%Für Tabellen, die eine Seite überschreiten
+\usepackage{pdflscape}
+\usepackage{caption}
+\usepackage{float}
+%\usepackage[tablegrid,tocentry]{vhistory}
+\usepackage[tablegrid]{vhistory}
+\usepackage[nottoc]{tocbibind}
+\usepackage[toc,page]{appendix}
+\usepackage{pdfpages}
+\usepackage[rightcaption]{sidecap}
+\usepackage{cite}
+\usepackage[]{acronym}
+\usepackage[pdftex,scale={.8,.8}]{geometry}
+\usepackage{layout}
+\usepackage{subfigure}
+\usepackage{fancybox}
+\usepackage{fancyhdr}
+\usepackage[toc]{glossaries}
+\usepackage[left,pagewise,modulo]{lineno}
+\usepackage[pdftex,colorlinks=false,hidelinks,pdfstartview=FitV]{hyperref}
+\usepackage{listings}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+	backgroundcolor=\color{white},   % choose the background color
+	basicstyle=\footnotesize,        % size of fonts used for the code
+	breaklines=true,                 % automatic line breaking only at whitespace
+	captionpos=b,                    % sets the caption-position to bottom
+	commentstyle=\color{mygreen},    % comment style
+	escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+	keywordstyle=\color{blue},       % keyword style
+	stringstyle=\color{mymauve},     % string literal style
+	language=Java,
+	frame=single,
+	numbers=left, 
+	numberstyle=\small
+}
+
+\input{sebidefault}
+
+\usepackage{metainfo}
+
+
+\input{base/metadata}
+
+% Generiert Deckblatt automatisch
+\AtBeginDocument{
+	\maketitle
+	\thispagestyle{empty}
+}
+
+% Generiert PDF Informationen
+\hypersetup{pdfinfo={
+		Title={\BoldTitle},
+		Author={\Authors},
+		Subject={\Subtitle}
+	}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOKUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\pagenumbering{Roman}
+
+\DeclareGraphicsExtensions{.pdf,.jpg,.png}
+
+% Deckblatt wird automatisch generiert.
+
+%\begin{abstract}
+%	asdfasdfasf
+%\end{abstract}
+
+
+% Versionstabelle
+% Falls keine gewünscht ist, einfach auskommentieren
+%\include{base/history}
+
+\newpage
+\tableofcontents % Inhaltsverzeichnis
+
+\lstlistoflistings
+
+\newpage
+
+
+\pagenumbering{arabic}
+\cleardoublepage
+
+
+% % Kopfzeile
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\pagestyle{fancyplain}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\lhead{\fancyplain{}{\textbf{\BoldTitle} - \Subtitle}}
+
+% Den Inhalt des Dokuments einbinden
+\include{content/content}
+
+
+% Anhang
+% Falls kein Anhang: auskommentieren
+%\include{appendix/appendix}
+
+%\include{base/acronyms}
+
+% Quellenverzeichnis
+% Falls keine Quellen: auskommentieren
+%\include{base/sources}
+
+\end{document}

@@ -1,0 +1,137 @@
+\documentclass[a4paper,oneside,titlepage]{report}
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[pdftex]{graphicx} %%Grafiken in pdfLaTeX
+\usepackage{a4wide} %%Kleinere Seitenränder = mehr Text pro Zeile.
+\usepackage{longtable} %%Für Tabellen, die eine Seite überschreiten
+\usepackage{pdflscape}
+\usepackage{caption}
+\usepackage{float}
+%\usepackage[tablegrid,tocentry]{vhistory}
+\usepackage[tablegrid,nochapter]{vhistory}
+\usepackage[nottoc]{tocbibind}
+\usepackage[toc,page]{appendix}
+\usepackage{pdfpages}
+\usepackage[rightcaption]{sidecap}
+\usepackage{cite}
+\usepackage[]{acronym}
+\usepackage[pdftex,scale={.8,.8}]{geometry}
+\usepackage{layout}
+\usepackage{subfigure}
+%\usepackage{fancybox}
+%\usepackage{fancyhdr}
+\usepackage[toc]{glossaries}
+\usepackage[left,pagewise,modulo]{lineno}
+\usepackage[pdftex,colorlinks=false,hidelinks,pdfstartview=FitV]{hyperref}
+
+\usepackage{%
+	array,
+	booktabs,
+	dcolumn,
+	rotating,
+	shortvrb,
+	units,
+	url,
+	lastpage,
+	longtable,
+	lscape
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.5\baselineskip}
+
+\usepackage{metainfo}
+\usepackage[pagestyles,raggedright]{titlesec}
+
+\input{base/metadata}
+
+% Generiert Deckblatt automatisch
+\AtBeginDocument{
+	\maketitle
+	\thispagestyle{empty}
+}
+
+% Generiert PDF Informationen
+\hypersetup{pdfinfo={
+		Title={\BoldTitle},
+		Author={\Authors},
+		Subject={\Subtitle}
+	}}
+	
+\usepackage{etoolbox}
+\patchcmd{\chapter}{plain}{short}{}{}
+
+
+\newpagestyle{long}{%
+	\sethead[\thepage][][\chaptername\ \thechapter:\ \chaptertitle]{\chaptername\ \thechapter:\ \chaptertitle}{}{\thepage}
+	\headrule
+}
+
+\newpagestyle{short}{%
+	\sethead[\thepage][][]{}{}{\thepage}
+	\headrule
+}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% DOKUMENT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\pagenumbering{roman}
+
+
+\DeclareGraphicsExtensions{.pdf,.jpg,.png}
+
+% Deckblatt wird automatisch generiert.
+
+
+\setcounter{page}{2}
+\chapter*{Summary}
+\label{chap:sum}
+\addcontentsline{toc}{chapter}{Summary}
+
+Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+\pagestyle{short}
+
+% Versionstabelle
+% Falls keine gewünscht ist, einfach auskommentieren
+%\include{base/history}
+
+\newpage
+\tableofcontents % Inhaltsverzeichnis
+
+
+\newpage
+
+
+
+\pagestyle{long}
+
+\pagenumbering{arabic}
+\cleardoublepage
+
+
+
+% Den Inhalt des Dokuments einbinden
+\include{content/content}
+
+
+\include{base/acronyms}
+
+% Quellenverzeichnis
+% Falls keine Quellen: auskommentieren
+\include{base/sources}
+
+% Anhang
+% Falls kein Anhang: auskommentieren
+%\include{appendix/appendix}
+
+
+
+\end{document}
