@@ -1,12 +1,20 @@
-
 %% requirements
+
+\newenvironment{function}[1]{
+	\subsection{Product function: #1}
+	\label{func:#1}
+}
+{}
+
+\newcommand{\funcref}[1]{\ref{func:#1}}
+
 \newenvironment{requirement}[1]{
 	%\stepcounter{subsubsection}
 	\subsubsection{#1}
 	\label{req:#1}
-
+	
 	\newcommand{\header}[1]{\textbf{##1}}
-
+	
 	\newcommand{\Identifier}{\hline \header{Identifier} & \header{\thesubsubsection} \\}
 	\newcommand{\Title}{\hline \header{Title} & #1 \\}
 	\newcommand{\Specification}[1]{\hline \header{Specification} & ##1 \\}
@@ -20,39 +28,17 @@
 	\newcommand{\High}{\Priority{Essential}}
 	\newcommand{\Medium}{\Priority{Medium}}
 	\newcommand{\Low}{\Priority{Low}}
-
+	\newcommand{\Function}[1]{\hline \header{Implemented product functions} & ##1 \\}
+	
 	\begin{tabular}{|p{0.3\textwidth}|p{0.7\textwidth}|}
 		\Identifier
 		\Title
 }
 {
-		\Source{\Client}
-		\hline
-	\end{tabular}
+		\Source{Program Manager, Marketing Department}
+		\hline 
+	\end{tabular} 
 }
 \setcounter{secnumdepth}{3}
-\newcommand{\Client}{Mr. Mustermann}
 \newcommand{\TBD}{TBD}
 \newcommand{\reqref}[1]{\ref{req:#1}}
-
-
-\begin{requirement}{Easy to use for teachers}
-	\Specification{The user interface shall be easy to use for teachers.}
-	\FitCriterion{
-		A survey after 3 months of use should reveal that at least 75\% of the teachers are satisfied with the user interface.
-	}
-	\Low
-\end{requirement}
-
-\begin{requirement}{Responsive Design}
-	\Specification{The user interface shall react on the users devices and show a proper layout for their screen and input method.}
-	\FitCriterion{
-		A survey after 3 months of use should reveal that at least 75\% of the users are satisfied with the layout on
-		\begin{enumerate}[(a)]
-			\item Desktop Computer
-			\item Tablets
-			\item Mobile phones
-		\end{enumerate}
-	}
-	\Low
-\end{requirement}
