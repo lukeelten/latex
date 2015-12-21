@@ -19,7 +19,7 @@ count:
 	texcount -merge -sum -total $(file).tex
 
 clean:
-	rm -f *.log *.lof *.lot *.toc *~ *.aux *.fls *.out *.bbl *.blg *.hst *.ver *.synctex.gz *.bcf *.run.xml $(file).pdf
+	rm -f *.log *.lof *.lot *.toc *~ *.aux *.fls *.out *.bbl *.blg *.hst *.ver *.lol *.synctex.gz *.bcf *.run.xml $(file).pdf
 	rm -f content/*.log content/*~ content/*.aux content/*.out
 	rm -f base/*.log base/*~ base/*.aux base/*.out base/*.bbl base/*.blg
 	rm -f appendix/*.log appendix/*~ appendix/*.aux appendix/*.out
