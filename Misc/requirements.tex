@@ -14,9 +14,11 @@
 	\label{req:#1}
 	
 	\newcommand{\header}[1]{\textbf{##1}}
+	\newcommand{\cellspace}{}
+	\newcommand{\Row}[2]{\hline \header{##1} & \cellspace ##2 \cellspace \\}
 	
 	\newcommand{\Identifier}{\hline \header{Identifier} & \header{\thesubsubsection} \\}
-	\newcommand{\Title}{\hline \header{Title} & #1 \\}
+	\newcommand{\Title}{\Row{Title}{#1}}
 	\newcommand{\Specification}[1]{\hline \header{Specification} & ##1 \\}
 	\newcommand{\Category}[1]{\hline \header{Category} & ##1 \\}
 	\newcommand{\FitCriterion}[1]{\hline \header{Fit criterion} & ##1 \\}
@@ -30,9 +32,9 @@
 	\newcommand{\Low}{\Priority{Low}}
 	\newcommand{\Function}[1]{\hline \header{Implemented product functions} & ##1 \\}
 	\newcommand{\Systemwide}{\Function{Systemwide}}
-	\newcommand{\Row}[2]{\hline \header{##1} & ##2 \\}
 	\newcommand{\Mockup}[1]{\Row{See Mockup}{##1}}
 	
+	\begin{doublespace}
 	\begin{tabular}{|p{0.35\textwidth}|p{0.65\textwidth}|}
 		\Identifier
 		\Title
@@ -40,7 +42,8 @@
 {
 		\hline 
 	\end{tabular} 
+	\end{doublespace}
 }
 \setcounter{secnumdepth}{3}
-\newcommand{\TBD}{TBD}
+\newcommand{\TBD}{To be defined}
 \newcommand{\reqref}[1]{\ref{req:#1}}
