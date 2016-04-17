@@ -6,7 +6,20 @@
 }
 {}
 
-\newcommand{\funcref}[1]{\ref{func:#1}}
+\newenvironment{mockup}[1]{
+	\section{#1}
+	
+	\begin{figure}[H]
+		\centering
+		\caption{Mockup: #1}
+		\label{mock:#1}
+}
+{
+	\end{figure}	
+}
+
+%\newcommand{\mockref}[1]{\ref{mock:#1}}
+%\newcommand{\funcref}[1]{\ref{func:#1}}
 
 \newenvironment{requirement}[1]{
 	%\stepcounter{subsubsection}
@@ -46,4 +59,9 @@
 }
 \setcounter{secnumdepth}{3}
 \newcommand{\TBD}{To be defined}
-\newcommand{\reqref}[1]{\glqq #1\grqq{} (\ref{req:#1})}
+
+\newcommand{\reference}[2]{\glqq #1\grqq{} (\ref{#2:#1})}
+
+\newcommand{\reqref}[1]{\reference{#1}{req}}
+\newcommand{\mockref}[1]{\reference{#1}{mock}}
+\newcommand{\funcref}[1]{\reference{#1}{func}}
