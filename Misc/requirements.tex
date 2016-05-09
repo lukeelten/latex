@@ -26,35 +26,78 @@
 	\subsubsection{#1}
 	\label{req:#1}
 	
+	% General used commands
 	\newcommand{\header}[1]{\textbf{##1}}
 	\newcommand{\cellspace}{}
 	\newcommand{\Row}[2]{\hline \header{##1} & \cellspace ##2 \cellspace \\}
 	
-	\newcommand{\Identifier}{\hline \header{Identifier} & \header{\thesubsubsection} \\}
-	\newcommand{\Title}{\Row{Title}{#1}}
-
-	\newcommand{\Specification}[1]{
-		\Row{Specification}{
-			\begin{singlespace*}
-				##1
-			\end{singlespace*}
+	% Requirements parts
+	\newcommand{\Identifier}{
+		\Row{Identifier}{
+			\header{
+				\thesubsubsection
+			}
 		}
 	}
 
-	\newcommand{\Category}[1]{\hline \header{Category} & ##1 \\}
-	\newcommand{\FitCriterion}[1]{\hline \header{Fit criterion} & ##1 \\}
-	\newcommand{\Source}[1]{\hline \header{Source} & ##1 \\}
-	\newcommand{\Rationale}[1]{\hline \header{Rationale} & ##1 \\}
-	\newcommand{\Interaction}[1]{\hline \header{Interaction} & ##1 \\}
-	\newcommand{\Priority}[1]{\hline \header{Priority} & ##1 \\}
-	\newcommand{\Stability}[1]{\hline \header{Stability} & ##1 \\}
+	\newcommand{\Title}{
+		\Row{Title}{#1}
+	}
+
+	\newcommand{\Specification}[1]{
+		\Row{Specification}{
+			%\begin{singlespace*}
+				##1
+			%\end{singlespace*}
+		}
+	}
+
+	\newcommand{\Category}[1]{
+		\Row{Category}{##1}
+	}
+
+	\newcommand{\FitCriterion}[1]{
+		\Row{Fit criterion}{##1}
+	}
+
+	\newcommand{\Source}[1]{
+		\Row{Source}{##1}
+	}
+
+	\newcommand{\Rationale}[1]{
+		\Row{Rationale}{##1}
+	}
+
+	\newcommand{\Interaction}[1]{
+		\Row{Interaction}{##1}
+	}
+
+	\newcommand{\Priority}[1]{
+		\Row{Priority}{##1}
+	}
+
+	\newcommand{\Stability}[1]{
+		\Row{Stability}{##1}
+	}
+
+	\newcommand{\Function}[1]{
+		\Row{Implemented product functions}{##1}
+	}
+
+	\newcommand{\Systemwide}{
+		\Function{Systemwide}
+	}
+
+	\newcommand{\Mockup}[1]{
+		\Row{See Mockup}{##1}
+	}
+
+	% Define some priorities
 	\newcommand{\High}{\Priority{Essential}}
 	\newcommand{\Medium}{\Priority{Medium}}
 	\newcommand{\Low}{\Priority{Low}}
-	\newcommand{\Function}[1]{\hline \header{Implemented product functions} & ##1 \\}
-	\newcommand{\Systemwide}{\Function{Systemwide}}
-	\newcommand{\Mockup}[1]{\Row{See Mockup}{##1}}
 	
+	% Start with default requirements specification
 	\begin{doublespace}
 	\begin{tabular}{|p{0.35\textwidth}|p{0.65\textwidth}|}
 		\Identifier
