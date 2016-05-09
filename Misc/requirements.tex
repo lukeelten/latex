@@ -32,7 +32,15 @@
 	
 	\newcommand{\Identifier}{\hline \header{Identifier} & \header{\thesubsubsection} \\}
 	\newcommand{\Title}{\Row{Title}{#1}}
-	\newcommand{\Specification}[1]{\hline \header{Specification} & ##1 \\}
+
+	\newcommand{\Specification}[1]{
+		\Row{Specification}{
+			\begin{singlespace}
+				##1
+			\end{singlespace}
+		}
+	}
+
 	\newcommand{\Category}[1]{\hline \header{Category} & ##1 \\}
 	\newcommand{\FitCriterion}[1]{\hline \header{Fit criterion} & ##1 \\}
 	\newcommand{\Source}[1]{\hline \header{Source} & ##1 \\}
@@ -58,7 +66,7 @@
 	\end{doublespace}
 }
 \setcounter{secnumdepth}{3}
-\newcommand{\TBD}{To be defined}
+\newcommand{\TBD}{\textbf{To be defined}}
 
 \newcommand{\reference}[2]{\glqq #1\grqq{} (\ref{#2:#1})}
 
