@@ -1,3 +1,21 @@
+%% Make itemnize and enumerate smaller
+\renewenvironment{itemize}{
+	\begin{itemize}
+	\itemsep0pt
+}
+{
+	\end{itemize}
+}
+
+\renewenvironment{enumerate}{
+	\begin{enumerate}
+	\itemsep0pt
+}
+{
+	\end{enumerate}
+}
+
+
 %% requirements
 
 \newenvironment{function}[1]{
